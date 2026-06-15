@@ -1,0 +1,126 @@
+export const siteData = {
+  academyName: "Orion Classes",
+  founder: "Sonam Bansal",
+  founderBio:
+    "With over 5 years of dedicated teaching experience, Sonam Bansal has helped 50+ children across Noida unlock their true potential. A certified Abacus and Vedic Maths educator, she brings warmth, patience and a structured approach to every session — making learning genuinely enjoyable for every child.",
+
+  contact: {
+    phone: "+918800093436",
+    whatsapp: "+918800093436",
+    email: "sonambansal.sb@gmail.com",
+    location: "Sector 79, Noida",
+    address: "Gaur Sportswood, Sector 79, Noida",
+  },
+
+  stats: [
+    {
+      value: "5+",
+      label: "Years of Experience",
+    },
+    {
+      value: "50+",
+      label: "Young Minds Trained",
+    },
+    {
+      value: "6",
+      label: "Programs Offered",
+    },
+    {
+      value: "3",
+      label: "Abacus Levels Completed",
+    },
+  ],
+
+  programs: [
+    {
+      title: "Abacus Training",
+      icon: "Calculator",
+      description:
+        "Improve concentration, memory, visualization and mental calculation speed through structured level-based abacus training.",
+    },
+    {
+      title: "Vedic Mathematics",
+      icon: "Divide",
+      description:
+        "Learn ancient fast-calculation techniques and build lasting confidence in mathematics through fun, engaging methods.",
+    },
+    {
+      title: "Brain Development",
+      icon: "Brain",
+      description:
+        "Strengthen memory, focus, observation and logical thinking skills through targeted brain-training activities.",
+    },
+    {
+      title: "Personality Development",
+      icon: "Star",
+      description:
+        "Build communication skills, confidence and positive self-expression to help your child shine in every situation.",
+    },
+    {
+      title: "Rubik's Cube Mastery",
+      icon: "Puzzle",
+      description:
+        "Develop problem-solving abilities, patience and spatial intelligence through the world's most popular puzzle.",
+    },
+    {
+      title: "Holiday Workshops",
+      icon: "Palette",
+      description:
+        "Fun, creative learning activities designed to keep young minds engaged, curious and growing during school breaks.",
+    },
+  ],
+
+  testimonials: [
+    {
+      text: "My daughter showed a noticeable improvement in mental calculations and confidence within just a few months. The classes are engaging, well-structured and Sonam ma'am gives personal attention to every child.",
+      author: "Priya S.",
+      role: "Parent of Grade 4 Student",
+      stars: 5,
+    },
+    {
+      text: "The Rubik's Cube program kept my son motivated and helped improve his concentration and problem-solving skills tremendously. He now solves it in under 2 minutes!",
+      author: "Rahul M.",
+      role: "Parent of Grade 5 Student",
+      stars: 5,
+    },
+    {
+      text: "The personal attention given to every child makes a huge difference. My child enjoys learning and looks forward to every class. Highly recommend Orion Classes!",
+      author: "Anjali K.",
+      role: "Parent of Grade 3 Student",
+      stars: 5,
+    },
+  ],
+
+  faqs: [
+    {
+      question: "What is the right age to start Abacus training?",
+      answer:
+        "Children as young as 4 years old can start Abacus training. The ideal age range is 4–14 years, when the brain is most receptive to developing strong mathematical foundations.",
+    },
+    {
+      question: "Are online classes available?",
+      answer:
+        "Yes! We offer live online classes across India via video call. The sessions are interactive and just as effective as in-person classes.",
+    },
+    {
+      question: "How long is each session?",
+      answer:
+        "Each session is typically 45–60 minutes, held 2–3 times per week depending on the program and the child's pace.",
+    },
+    {
+      question: "Do you offer home tuition in Noida?",
+      answer:
+        "Yes, we offer home tuition across Noida, especially in and around Sector 79, Gaur Sportswood and nearby areas.",
+    },
+    {
+      question: "Can I book a free trial class before enrolling?",
+      answer:
+        "Absolutely! We offer a free trial class so your child can experience the teaching style before you commit. Just WhatsApp us to schedule one.",
+    },
+    {
+      question: "How many levels does the Abacus program have?",
+      answer:
+        "Our Abacus program has multiple levels of progression. We have successfully completed 3 full levels with our students, with each level building on the previous one.",
+    },
+  ],
+};
