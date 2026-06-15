@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -80,14 +80,10 @@ export default function Footer() {
                   sonambansal.sb@gmail.com
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-purple-400 mt-0.5 shrink-0" />
-                <span>Gaur Sportswood, Sector 79, Noida</span>
-              </li>
             </ul>
 
             <div className="mt-6 space-y-1 text-sm text-gray-400">
-              <p>🏠 Home Tuition — Noida</p>
+              <p>🏠 Offline Classes — Noida</p>
               <p>💻 Online Classes — Pan India</p>
             </div>
           </div>
@@ -95,10 +91,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-gray-800">
+      <div className="border-t-2 border-transparent" style={{ borderImage: "linear-gradient(to right, #9333ea, #f97316) 1" }}>
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} Orion Classes. All rights reserved.</p>
-          <p>Abacus · Vedic Maths · Brain Development · Noida</p>
+          <p>Abacus · Vedic Maths · Maths Wizard · Noida</p>
         </div>
       </div>
     </footer>

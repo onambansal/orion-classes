@@ -34,17 +34,17 @@ const points = [
   },
   {
     icon: Laptop,
-    title: "Online & Home Tuition",
+    title: "Online & Offline Tuition",
     description:
-      "Flexible learning options — attend from home or get tuition at your doorstep across Noida.",
+      "Flexible learning options — Offline and Online.",
     color: "text-orange-500",
     bg: "bg-orange-50",
   },
   {
     icon: Trophy,
-    title: "5+ Years of Experience",
+    title: "10+ Years of Experience",
     description:
-      "Proven track record with 50+ students trained and multiple Abacus levels completed.",
+      "Proven track record with 150+ students trained and multiple Abacus levels completed.",
     color: "text-purple-600",
     bg: "bg-purple-50",
   },

@@ -39,11 +39,18 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-24 bg-gradient-to-b from-purple-50 to-white"
+      className="py-14 bg-gradient-to-b from-purple-50 to-white relative overflow-hidden"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle, #d8b4fe 1px, transparent 1px)",
+        backgroundSize: "28px 28px",
+      }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      {/* Overlay to soften the dot pattern */}
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-50/90 to-white/95 pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto px-6">
 
-        <div className="text-center mb-14">
+        <div className="text-center mb-10">
           <span className="text-purple-700 font-semibold text-sm uppercase tracking-wider">
             Parent Feedback
           </span>
@@ -85,7 +92,7 @@ export default function Testimonials() {
 
         <div className="mt-14 text-center">
           <p className="text-gray-600 mb-6 text-lg">
-            Join 50+ happy families at Orion Classes!
+            Join 150+ happy families at Orion Classes!
           </p>
           <a
             href="https://wa.me/918800093436?text=Hi%20Sonam%20ma'am!%20I'd%20like%20to%20enrol%20my%20child%20at%20Orion%20Classes."

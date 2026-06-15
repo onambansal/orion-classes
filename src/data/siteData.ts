@@ -2,69 +2,54 @@ export const siteData = {
   academyName: "Orion Classes",
   founder: "Sonam Bansal",
   founderBio:
-    "With over 5 years of dedicated teaching experience, Sonam Bansal has helped 50+ children across Noida unlock their true potential. A certified Abacus and Vedic Maths educator, she brings warmth, patience and a structured approach to every session — making learning genuinely enjoyable for every child.",
+    "With over 5 years of dedicated teaching experience, Sonam Bansal has helped 150+ children across Noida unlock their true potential. A certified Abacus and Vedic Maths educator, she brings warmth, patience and a structured approach to every session — making learning genuinely enjoyable for every child.",
 
   contact: {
     phone: "+918800093436",
     whatsapp: "+918800093436",
     email: "sonambansal.sb@gmail.com",
-    location: "Sector 79, Noida",
-    address: "Gaur Sportswood, Sector 79, Noida",
   },
 
   stats: [
-    {
-      value: "5+",
-      label: "Years of Experience",
-    },
-    {
-      value: "50+",
-      label: "Young Minds Trained",
-    },
-    {
-      value: "6",
-      label: "Programs Offered",
-    },
-    {
-      value: "3",
-      label: "Abacus Levels Completed",
-    },
+    { value: "10+", label: "Years of Experience" },
+    { value: "150+", label: "Young Minds Trained" },
+    { value: "4", label: "Programs Offered" },
+    { value: "3", label: "Abacus Levels Completed" },
   ],
 
   programs: [
     {
       title: "Abacus Training",
       icon: "Calculator",
+      ageGroup: "Ages 4–14",
       description:
         "Improve concentration, memory, visualization and mental calculation speed through structured level-based abacus training.",
     },
     {
       title: "Vedic Mathematics",
       icon: "Divide",
+      ageGroup: "Ages 8–15",
       description:
         "Learn ancient fast-calculation techniques and build lasting confidence in mathematics through fun, engaging methods.",
     },
     {
-      title: "Brain Development",
+      title: "Maths Wizard",
       icon: "Brain",
+      ageGroup: "Ages 4–12",
       description:
         "Strengthen memory, focus, observation and logical thinking skills through targeted brain-training activities.",
     },
     {
-      title: "Personality Development",
-      icon: "Star",
-      description:
-        "Build communication skills, confidence and positive self-expression to help your child shine in every situation.",
-    },
-    {
-      title: "Rubik's Cube Mastery",
+      title: "Rubik's Cube",
       icon: "Puzzle",
+      ageGroup: "Ages 7–15",
       description:
         "Develop problem-solving abilities, patience and spatial intelligence through the world's most popular puzzle.",
     },
     {
       title: "Holiday Workshops",
       icon: "Palette",
+      ageGroup: "Ages 4–15",
       description:
         "Fun, creative learning activities designed to keep young minds engaged, curious and growing during school breaks.",
     },
@@ -110,7 +95,7 @@ export const siteData = {
     {
       question: "Do you offer home tuition in Noida?",
       answer:
-        "Yes, we offer home tuition across Noida, especially in and around Sector 79, Gaur Sportswood and nearby areas.",
+        "We offer online classes PAN India and offline classes at our centre.",
     },
     {
       question: "Can I book a free trial class before enrolling?",
