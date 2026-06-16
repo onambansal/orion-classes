@@ -54,7 +54,7 @@ export default function Testimonials() {
           <span className="text-purple-700 font-semibold text-sm uppercase tracking-wider">
             Parent Feedback
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3">
             What Parents Say
           </h2>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">

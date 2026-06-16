@@ -26,6 +26,9 @@ const colorMap = [
   { icon: "text-orange-500", bg: "bg-orange-50", border: "border-orange-100", badge: "bg-orange-100 text-orange-700", hoverBorder: "hover:border-orange-400", hoverShadow: "hover:shadow-orange-100" },
 ];
 
+// Index of the "Most Popular" program (0 = first = Abacus)
+const MOST_POPULAR_INDEX = 0;
+
 export default function Programs() {
   return (
     <section
@@ -38,7 +41,7 @@ export default function Programs() {
           <span className="text-purple-700 font-semibold text-sm uppercase tracking-wider">
             What We Offer
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3">
             Programs Designed for Holistic Growth
           </h2>
           <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
@@ -52,11 +55,17 @@ export default function Programs() {
             const Icon = iconMap[program.icon] ?? Calculator;
             const colors = colorMap[index % colorMap.length];
 
+            const isMostPopular = index === MOST_POPULAR_INDEX;
             return (
               <div
                 key={program.title}
-                className={`bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-300 border-2 ${colors.border} ${colors.hoverBorder} flex flex-col`}
+                className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-300 border-2 ${isMostPopular ? "border-purple-500" : colors.border} ${colors.hoverBorder} flex flex-col`}
               >
+                {isMostPopular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-orange-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-md whitespace-nowrap">
+                    ⭐ Most Popular
+                  </div>
+                )}
                 <div className="flex items-start justify-between mb-6">
                   <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${colors.bg}`}>
                     <Icon className={`w-7 h-7 ${colors.icon}`} />
@@ -94,7 +103,7 @@ export default function Programs() {
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-purple-600 to-orange-500 text-white px-10 py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition text-lg"
           >
-            🎉 Book a Free Trial Class
+            🎉 Book a Trial Class
           </a>
           <p className="mt-3 text-sm text-gray-500">
           </p>

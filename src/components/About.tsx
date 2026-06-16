@@ -62,7 +62,7 @@ export default function About() {
           <span className="text-purple-700 font-semibold text-sm uppercase tracking-wider">
             About Orion Classes
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3">
             Meet the Educator Behind the Magic
           </h2>
         </div>
@@ -72,16 +72,16 @@ export default function About() {
           <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-5">
             🎓 Certified Educator &nbsp;|&nbsp; Founder, Orion Classes
           </div>
-          <h3 className="text-3xl font-bold text-gray-900 mb-2">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             Hi, I&apos;m <span className="text-purple-700">Sonam Bansal</span>
           </h3>
           <p className="text-orange-500 font-medium mb-6">
             Founder &amp; Lead Educator, Orion Classes
           </p>
-          <blockquote className="border-l-4 border-purple-500 pl-6 text-left mb-5">
-            <p className="text-lg text-gray-600 leading-relaxed">
+          <blockquote className="border-l-4 border-purple-500 pl-4 sm:pl-6 text-left mb-5">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
               With over 10 years of dedicated teaching experience, I have helped 150+ children
-              across Noida unlock their true potential. As a certified Abacus and Vedic Maths
+              across world to unlock their true potential. As a certified Abacus and Vedic Maths
               educator, I bring warmth, patience and a structured approach to every session —
               making learning genuinely enjoyable for every child.
             </p>

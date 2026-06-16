@@ -14,14 +14,23 @@ export const metadata: Metadata = {
       "Helping children aged 4–15 build concentration, memory, confidence and mental maths skills through structured programs. Offline & online classes available.",
     type: "website",
     locale: "en_IN",
+    url: "https://orionclasses.in",
+    siteName: "Orion Classes",
     images: [
       {
-        url: "/images/hero.jpg",
+        url: "/logo/logo.png",
         width: 1200,
         height: 630,
         alt: "Orion Classes — Abacus & Vedic Maths for Kids",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Orion Classes — Abacus & Vedic Maths for Kids | Noida",
+    description:
+      "Helping children aged 4–15 build concentration, memory, confidence and mental maths skills. Book a trial class today!",
+    images: ["/logo/logo.png"],
   },
 };
 

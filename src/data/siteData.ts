@@ -2,7 +2,7 @@ export const siteData = {
   academyName: "Orion Classes",
   founder: "Sonam Bansal",
   founderBio:
-    "With over 5 years of dedicated teaching experience, Sonam Bansal has helped 150+ children across Noida unlock their true potential. A certified Abacus and Vedic Maths educator, she brings warmth, patience and a structured approach to every session — making learning genuinely enjoyable for every child.",
+    "With over 5 years of dedicated teaching experience, Sonam Bansal has helped 150+ children across World unlock their true potential. A certified Abacus and Vedic Maths educator, she brings warmth, patience and a structured approach to every session — making learning genuinely enjoyable for every child.",
 
   contact: {
     phone: "+918800093436",
@@ -13,9 +13,7 @@ export const siteData = {
   stats: [
     { value: "10+", label: "Years of Experience" },
     { value: "150+", label: "Young Minds Trained" },
-    { value: "4", label: "Programs Offered" },
-    { value: "3", label: "Abacus Levels Completed" },
-  ],
+    { value: "4", label: "Programs Offered" },  ],
 
   programs: [
     {
@@ -93,19 +91,14 @@ export const siteData = {
         "Each session is typically 45–60 minutes, held 2–3 times per week depending on the program and the child's pace.",
     },
     {
-      question: "Do you offer home tuition in Noida?",
+      question: "Do you offer offline classes in Noida?",
       answer:
         "We offer online classes PAN India and offline classes at our centre.",
     },
     {
-      question: "Can I book a free trial class before enrolling?",
+      question: "Can I book a trial class before enrolling?",
       answer:
-        "Absolutely! We offer a free trial class so your child can experience the teaching style before you commit. Just WhatsApp us to schedule one.",
-    },
-    {
-      question: "How many levels does the Abacus program have?",
-      answer:
-        "Our Abacus program has multiple levels of progression. We have successfully completed 3 full levels with our students, with each level building on the previous one.",
+        "Absolutely! We offer a trial class so your child can experience the teaching style. Just WhatsApp us to schedule one.",
     },
   ],
 };

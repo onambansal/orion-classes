@@ -15,6 +15,7 @@ export default function Footer() {
                 alt="Orion Classes"
                 width={48}
                 height={48}
+                style={{ width: 48, height: "auto" }}
                 className="rounded-xl"
               />
               <div>

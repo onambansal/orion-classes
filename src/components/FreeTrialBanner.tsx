@@ -10,7 +10,7 @@ export default function FreeTrialBanner() {
   return (
     <div className="bg-gradient-to-r from-purple-700 to-orange-500 text-white py-3 px-4 text-center relative z-40">
       <p className="text-sm md:text-base font-medium">
-        🎉 <strong>Book a FREE Trial Class Today!</strong> — Limited seats
+        🎉 <strong>Book a Trial Class Today!</strong> — Limited seats
         available.{" "}
         <a
           href="https://wa.me/918800093436?text=Hi%20Sonam%20ma'am!%20I'd%20like%20to%20book%20a%20free%20trial%20class%20for%20my%20child."

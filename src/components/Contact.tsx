@@ -79,12 +79,12 @@ export default function Contact() {
           <span className="text-purple-700 font-semibold text-sm uppercase tracking-wider">
             Get in Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3">
             Contact Orion Classes
           </h2>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
             Ready to give your child the gift of sharper thinking? Reach out
-            today and book a free trial class!
+            today and book a trial class!
           </p>
         </div>
 
@@ -129,7 +129,7 @@ export default function Contact() {
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Child&apos;s Age

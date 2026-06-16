@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUp } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -14,12 +14,39 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      setShowBackToTop(window.scrollY > 400);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-40% 0px -55% 0px" }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <nav
@@ -38,6 +65,7 @@ export default function Navbar() {
             alt="Orion Classes"
             width={44}
             height={44}
+            style={{ width: 44, height: "auto" }}
             className="rounded-xl"
           />
           <div>
@@ -48,15 +76,23 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-gray-600 hover:text-purple-700 font-medium transition text-sm"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const sectionId = link.href.replace("#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                className={`font-medium transition text-sm relative pb-0.5 ${
+                  isActive
+                    ? "text-purple-700 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-purple-600 after:rounded-full"
+                    : "text-gray-600 hover:text-purple-700"
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </div>
 
         {/* CTA */}
@@ -67,7 +103,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-orange-500 text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition group"
           >
-            <span className="relative z-10">🎉 Free Trial Class</span>
+            <span className="relative z-10">🎉 Trial Class</span>
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
           </a>
         </div>
@@ -81,6 +117,17 @@ export default function Navbar() {
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-24 right-4 z-50 w-11 h-11 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+          aria-label="Back to top"
+        >
+          <ArrowUp size={20} />
+        </button>
+      )}
 
       {/* Mobile Menu */}
       {menuOpen && (
@@ -101,7 +148,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="block bg-gradient-to-r from-purple-600 to-orange-500 text-white px-5 py-3 rounded-xl font-semibold text-sm text-center mt-2"
           >
-            🎉 Free Trial Class
+            🎉 Trial Class
           </a>
         </div>
       )}

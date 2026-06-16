@@ -13,7 +13,7 @@ export default function MobileCTA() {
         rel="noopener noreferrer"
         className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-orange-500 text-white py-3 rounded-xl font-bold text-sm shadow-lg transition"
       >
-        🎉 Free Trial Class
+        🎉 Trial Class
       </a>
     </div>
   );

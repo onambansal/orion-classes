@@ -55,39 +55,55 @@ export default function Hero() {
 
         {/* Left Content */}
         <div>
-          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 md:mb-6">
             ⭐ 10+ Years Experience &nbsp;|&nbsp; Ages 4–15
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-            <span className="text-gray-900">Building Smart,</span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"> Confident </span>
-            <span className="text-gray-900">&amp; Creative</span>
-            <br />
-            <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"> Young Minds</span>
-          </h1>
+          {/* Mobile: heading + image side by side */}
+          <div className="flex items-start gap-3 md:block">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 md:mb-6 flex-1">
+              <span className="text-gray-900">Building Smart,</span>
+              <br />
+              <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"> Confident </span>
+              <span className="text-gray-900">&amp; Creative</span>
+              <br />
+              <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"> Young Minds</span>
+            </h1>
 
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            {/* Image — visible only on mobile (hidden on md+) */}
+            <div className="relative w-32 shrink-0 md:hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-200 to-orange-200 rounded-2xl rotate-2 scale-105 opacity-40" />
+              <Image
+                src="/images/logo.png"
+                alt="Orion Classes"
+                width={200}
+                height={200}
+                className="relative rounded-2xl shadow-lg w-full object-cover"
+                priority
+              />
+            </div>
+          </div>
+
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
             Helping children improve concentration, memory, confidence, mental
             mathematics, problem-solving and overall personality development
             through structured and engaging learning programs.
           </p>
 
           {/* Primary CTAs */}
-          <div className="flex flex-wrap gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-4">
             <a
               href="https://wa.me/918800093436?text=Hi%20Sonam%20ma'am!%20I'd%20like%20to%20book%20a%20FREE%20trial%20class%20for%20my%20child."
               target="_blank"
               rel="noopener noreferrer"
-              className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 transition text-white px-8 py-4 rounded-2xl font-bold shadow-lg text-lg group"
+              className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 transition text-white px-8 py-4 rounded-2xl font-bold shadow-lg text-lg group text-center"
             >
-              <span className="relative z-10">🎉 Book FREE Trial Class</span>
+              <span className="relative z-10">🎉 Book Trial Class</span>
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
             </a>
             <a
               href="tel:+918800093436"
-              className="bg-white border-2 border-purple-200 hover:border-purple-400 text-purple-700 px-8 py-4 rounded-2xl font-semibold shadow-md transition text-lg"
+              className="bg-white border-2 border-purple-200 hover:border-purple-400 text-purple-700 px-8 py-4 rounded-2xl font-semibold shadow-md transition text-lg text-center"
             >
               📞 Call Now
             </a>
@@ -116,8 +132,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Image */}
-        <div className="relative">
+        {/* Right Image — hidden on mobile (shown only on md+) */}
+        <div className="relative hidden md:block">
           <div className="absolute -top-4 -left-4 bg-orange-500 text-white px-5 py-2.5 rounded-2xl shadow-xl font-semibold text-sm z-10">
             🏆 150+ Students
           </div>
@@ -138,7 +154,7 @@ export default function Hero() {
 
       {/* Animated Stats Bar */}
       <div className="relative border-t border-gray-100 bg-white/80 backdrop-blur-sm">
-        <div className="max-w-5xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="max-w-5xl mx-auto px-6 py-8 grid grid-cols-3 gap-6">
           {siteData.stats.map((stat, i) => {
             const numericValue = parseInt(stat.value.replace(/\D/g, ""), 10);
             const suffix = stat.value.replace(/[0-9]/g, "");

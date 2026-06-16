@@ -16,6 +16,18 @@ const images = [
   { src: "/images/gallery/g8.jpeg", alt: "Students at Orion Classes" },
   { src: "/images/gallery/g9.jpeg", alt: "Students at Orion Classes" },
   { src: "/images/gallery/g10.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g11.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g12.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g13.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g14.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g15.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g16.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g17.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g18.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g19.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g20.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g21.jpeg", alt: "Students at Orion Classes" },
+  { src: "/images/gallery/g22.jpeg", alt: "Students at Orion Classes" },
 ];
 
 const VISIBLE = 3; // photos per page on desktop
@@ -38,7 +50,7 @@ export default function Gallery() {
           <span className="text-purple-700 font-semibold text-sm uppercase tracking-wider">
             Our Classroom
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3">
             Learning in Action
           </h2>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -60,7 +72,8 @@ export default function Gallery() {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover group-hover:scale-105 transition duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-contain group-hover:scale-105 transition duration-500"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 rounded-3xl flex items-end p-5">
