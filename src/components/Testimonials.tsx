@@ -1,5 +1,7 @@
+"use client";
 import { Quote } from "lucide-react";
 import { siteData } from "@/data/siteData";
+import { useEffect, useRef, useState } from "react";
 
 function StarRating({ count }: { count: number }) {
   return (
@@ -36,6 +38,32 @@ function Avatar({ name }: { name: string }) {
 }
 
 export default function Testimonials() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const total = siteData.testimonials.length;
+
+  useEffect(() => {
+    if (paused) return;
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % total);
+    }, 4000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [paused, total]);
+
+  const goTo = (index: number) => {
+    setCurrent(index);
+    // Reset timer on manual navigation
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (!paused) {
+      intervalRef.current = setInterval(() => {
+        setCurrent((prev) => (prev + 1) % total);
+      }, 4000);
+    }
+  };
+
   return (
     <section
       id="testimonials"
@@ -63,27 +91,90 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Carousel */}
+        <div
+          className="relative max-w-3xl mx-auto"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {/* Cards */}
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${current * 100}%)` }}
+            >
+              {siteData.testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="min-w-full px-2"
+                >
+                  <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 flex flex-col">
+                    <Quote className="w-9 h-9 text-purple-200 mb-4" />
+                    <StarRating count={testimonial.stars} />
+                    <p className="text-gray-700 leading-relaxed mb-6 flex-1 italic text-lg">
+                      &ldquo;{testimonial.text}&rdquo;
+                    </p>
+                    <div className="border-t border-gray-100 pt-5 flex items-center gap-3">
+                      <Avatar name={testimonial.author} />
+                      <div>
+                        <p className="font-bold text-gray-900 text-sm">
+                          {testimonial.author}
+                        </p>
+                        <p className="text-gray-500 text-xs">{testimonial.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-6">
+            {siteData.testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className={`transition-all duration-300 rounded-full ${
+                  i === current
+                    ? "bg-purple-600 w-6 h-2.5"
+                    : "bg-gray-300 hover:bg-purple-300 w-2.5 h-2.5"
+                }`}
+                aria-label={`Go to testimonial ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Progress bar */}
+          <div className="mt-4 max-w-xs mx-auto h-1 bg-gray-100 rounded-full overflow-hidden">
+            <div
+              key={current}
+              className={`h-full bg-gradient-to-r from-purple-600 to-orange-500 rounded-full ${
+                paused ? "" : "animate-progress-bar"
+              }`}
+            />
+          </div>
+        </div>
+
+        {/* All testimonials grid (visible on md+) */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8 mt-12">
           {siteData.testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-300 border border-gray-100 flex flex-col"
+              onClick={() => goTo(index)}
+              className={`bg-white rounded-3xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 border-2 cursor-pointer ${
+                index === current ? "border-purple-400" : "border-gray-100"
+              }`}
             >
-              <Quote className="w-9 h-9 text-purple-200 mb-4" />
-
               <StarRating count={testimonial.stars} />
-
-              <p className="text-gray-700 leading-relaxed mb-6 flex-1 italic">
+              <p className="text-gray-600 text-sm leading-relaxed mb-4 italic line-clamp-3">
                 &ldquo;{testimonial.text}&rdquo;
               </p>
-
-              <div className="border-t border-gray-100 pt-5 flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <Avatar name={testimonial.author} />
                 <div>
-                  <p className="font-bold text-gray-900 text-sm">
-                    {testimonial.author}
-                  </p>
-                  <p className="text-gray-500 text-xs">{testimonial.role}</p>
+                  <p className="font-bold text-gray-900 text-xs">{testimonial.author}</p>
+                  <p className="text-gray-400 text-xs">{testimonial.role}</p>
                 </div>
               </div>
             </div>

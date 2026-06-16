@@ -40,6 +40,51 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
   );
 }
 
+const cyclingWords = ["Smart,", "Confident", "Creative"];
+const cyclingColors = [
+  "bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent",
+  "bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent",
+  "bg-gradient-to-r from-purple-500 to-orange-500 bg-clip-text text-transparent",
+];
+
+function TypingCycler() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const [charIndex, setCharIndex] = useState(0);
+
+  useEffect(() => {
+    const word = cyclingWords[wordIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!deleting && charIndex < word.length) {
+      timeout = setTimeout(() => {
+        setDisplayed(word.slice(0, charIndex + 1));
+        setCharIndex((c) => c + 1);
+      }, 80);
+    } else if (!deleting && charIndex === word.length) {
+      timeout = setTimeout(() => setDeleting(true), 1800);
+    } else if (deleting && charIndex > 0) {
+      timeout = setTimeout(() => {
+        setDisplayed(word.slice(0, charIndex - 1));
+        setCharIndex((c) => c - 1);
+      }, 45);
+    } else if (deleting && charIndex === 0) {
+      setDeleting(false);
+      setWordIndex((i) => (i + 1) % cyclingWords.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, deleting, wordIndex]);
+
+  return (
+    <span className={`${cyclingColors[wordIndex]} inline-block min-w-[2ch]`}>
+      {displayed}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+}
+
 const statIcons = ["🏆", "👦", "📚", "🎯"];
 
 export default function Hero() {
@@ -62,11 +107,10 @@ export default function Hero() {
           {/* Mobile: heading + image side by side */}
           <div className="flex items-start gap-3 md:block">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 md:mb-6 flex-1">
-              <span className="text-gray-900">Building Smart,</span>
+              <span className="text-gray-900">Building </span>
+              <TypingCycler />
               <br />
-              <span className="bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent"> Confident </span>
-              <span className="text-gray-900">&amp; Creative</span>
-              <br />
+              <span className="text-gray-900">&amp; </span>
               <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent"> Young Minds</span>
             </h1>
 

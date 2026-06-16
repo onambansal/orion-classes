@@ -1,3 +1,4 @@
+"use client";
 import {
   Calculator,
   Divide,
@@ -5,8 +6,10 @@ import {
   Star,
   Puzzle,
   Palette,
+  ChevronDown,
 } from "lucide-react";
 import { siteData } from "@/data/siteData";
+import { useState } from "react";
 
 const iconMap: Record<string, React.ElementType> = {
   Calculator,
@@ -26,10 +29,50 @@ const colorMap = [
   { icon: "text-orange-500", bg: "bg-orange-50", border: "border-orange-100", badge: "bg-orange-100 text-orange-700", hoverBorder: "hover:border-orange-400", hoverShadow: "hover:shadow-orange-100" },
 ];
 
+// Benefits per program
+const programBenefits: Record<string, string[]> = {
+  "Abacus Training": [
+    "Faster mental calculation",
+    "Improved concentration & focus",
+    "Enhanced memory & visualization",
+    "Level-based progression system",
+  ],
+  "Vedic Mathematics": [
+    "Ancient fast-calculation techniques",
+    "Builds lasting maths confidence",
+    "Reduces fear of numbers",
+    "Fun & engaging methods",
+  ],
+  "Maths Wizard": [
+    "Strengthens memory & focus",
+    "Improves logical thinking",
+    "Observation skill development",
+    "Brain-training activities",
+  ],
+  "Rubik's Cube": [
+    "Problem-solving abilities",
+    "Spatial intelligence",
+    "Patience & perseverance",
+    "Algorithmic thinking",
+  ],
+  "Holiday Workshops": [
+    "Creative learning activities",
+    "Keeps young minds engaged",
+    "Fun during school breaks",
+    "Multiple skill development",
+  ],
+};
+
 // Index of the "Most Popular" program (0 = first = Abacus)
 const MOST_POPULAR_INDEX = 0;
 
 export default function Programs() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
     <section
       id="programs"
@@ -54,12 +97,17 @@ export default function Programs() {
           {siteData.programs.map((program, index) => {
             const Icon = iconMap[program.icon] ?? Calculator;
             const colors = colorMap[index % colorMap.length];
-
             const isMostPopular = index === MOST_POPULAR_INDEX;
+            const isExpanded = expandedIndex === index;
+            const benefits = programBenefits[program.title] ?? [];
+
             return (
               <div
                 key={program.title}
-                className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition duration-300 border-2 ${isMostPopular ? "border-purple-500" : colors.border} ${colors.hoverBorder} flex flex-col`}
+                style={{ animationDelay: `${index * 80}ms` }}
+                className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 border-2 ${
+                  isMostPopular ? "border-purple-500" : colors.border
+                } ${colors.hoverBorder} flex flex-col`}
               >
                 {isMostPopular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-orange-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-md whitespace-nowrap">
@@ -83,14 +131,50 @@ export default function Programs() {
                   {program.description}
                 </p>
 
-                <a
-                  href={`https://wa.me/918800093436?text=Hi%20Sonam%20ma'am!%20I'm%20interested%20in%20the%20${encodeURIComponent(program.title)}%20program.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-1 text-purple-700 font-semibold text-sm hover:text-orange-500 transition"
+                {/* Expandable benefits */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    isExpanded ? "max-h-48 opacity-100 mt-4" : "max-h-0 opacity-0"
+                  }`}
                 >
-                  Enquire Now →
-                </a>
+                  <div className="border-t border-gray-100 pt-4">
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                      What your child will learn:
+                    </p>
+                    <ul className="space-y-1.5">
+                      {benefits.map((benefit) => (
+                        <li key={benefit} className="flex items-center gap-2 text-sm text-gray-700">
+                          <span className="text-green-500 font-bold shrink-0">✓</span>
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-5 flex items-center justify-between">
+                  <a
+                    href={`https://wa.me/918800093436?text=Hi%20Sonam%20ma'am!%20I'm%20interested%20in%20the%20${encodeURIComponent(program.title)}%20program.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-purple-700 font-semibold text-sm hover:text-orange-500 transition"
+                  >
+                    Enquire Now →
+                  </a>
+                  <button
+                    onClick={() => toggleExpand(index)}
+                    className={`flex items-center gap-1 text-xs font-medium transition-colors ${
+                      isExpanded ? "text-purple-600" : "text-gray-400 hover:text-purple-500"
+                    }`}
+                    aria-label={isExpanded ? "Show less" : "Show benefits"}
+                  >
+                    {isExpanded ? "Less" : "Benefits"}
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                </div>
               </div>
             );
           })}

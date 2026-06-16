@@ -116,12 +116,13 @@ export default function About() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyPoints.map((point) => {
+            {whyPoints.map((point, index) => {
               const Icon = point.icon;
               return (
                 <div
                   key={point.title}
-                  className="bg-gray-50 rounded-3xl p-6 hover:shadow-lg hover:-translate-y-1 transition duration-300 border border-gray-100"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                  className="bg-gray-50 rounded-3xl p-6 hover:shadow-lg hover:-translate-y-1 transition duration-300 border border-gray-100 animate-fade-in-up"
                 >
                   <div
                     className={`inline-flex items-center justify-center w-11 h-11 rounded-2xl ${point.bg} mb-4`}
