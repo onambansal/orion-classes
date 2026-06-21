@@ -79,3 +79,17 @@ html {
 .animate-progress-bar {
   animation: progressBar 4s linear forwards;
 }
+
+/* Mobile CTA pulse glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.18);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}

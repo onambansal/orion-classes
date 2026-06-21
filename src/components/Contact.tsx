@@ -38,6 +38,111 @@ function FAQAccordion() {
   );
 }
 
+// Floating label input component
+function FloatingInput({
+  label,
+  name,
+  type = "text",
+  required = false,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+}) {
+  const [focused, setFocused] = useState(false);
+  const isFloated = focused || value.length > 0;
+
+  return (
+    <div className="relative">
+      <input
+        type={type}
+        name={name}
+        required={required}
+        value={value}
+        onChange={onChange}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        placeholder={isFloated ? placeholder : ""}
+        className={`w-full border rounded-xl px-4 pt-6 pb-2 text-sm focus:outline-none transition-all duration-200 bg-white ${
+          focused
+            ? "border-purple-400 ring-2 ring-purple-100"
+            : "border-gray-200 hover:border-gray-300"
+        }`}
+      />
+      <label
+        className={`absolute left-4 transition-all duration-200 pointer-events-none font-medium ${
+          isFloated
+            ? "top-2 text-xs text-purple-600"
+            : "top-1/2 -translate-y-1/2 text-sm text-gray-400"
+        }`}
+      >
+        {label}
+        {required && <span className="text-orange-500 ml-0.5">*</span>}
+      </label>
+    </div>
+  );
+}
+
+// Floating label select component
+function FloatingSelect({
+  label,
+  name,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: string[];
+}) {
+  const [focused, setFocused] = useState(false);
+  const isFloated = focused || value.length > 0;
+
+  return (
+    <div className="relative">
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        className={`w-full border rounded-xl px-4 pt-6 pb-2 text-sm focus:outline-none transition-all duration-200 bg-white appearance-none ${
+          focused
+            ? "border-purple-400 ring-2 ring-purple-100"
+            : "border-gray-200 hover:border-gray-300"
+        } ${!value ? "text-gray-400" : "text-gray-900"}`}
+      >
+        <option value="">Select a program...</option>
+        {options.map((p) => (
+          <option key={p} value={p}>{p}</option>
+        ))}
+      </select>
+      <label
+        className={`absolute left-4 transition-all duration-200 pointer-events-none font-medium ${
+          isFloated
+            ? "top-2 text-xs text-purple-600"
+            : "top-1/2 -translate-y-1/2 text-sm text-gray-400"
+        }`}
+      >
+        {label}
+      </label>
+      <ChevronDown
+        size={16}
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+      />
+    </div>
+  );
+}
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -101,71 +206,46 @@ export default function Contact() {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="e.g. Priya Sharma"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  required
-                  value={form.phone}
-                  onChange={handleChange}
-                  placeholder="e.g. 98765 43210"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
-                />
-              </div>
+              <FloatingInput
+                label="Your Name"
+                name="name"
+                required
+                value={form.name}
+                onChange={handleChange}
+                placeholder="e.g. Priya Sharma"
+              />
+              <FloatingInput
+                label="Phone Number"
+                name="phone"
+                type="tel"
+                required
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="e.g. 98765 43210"
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Child&apos;s Age
-                  </label>
-                  <input
-                    type="text"
-                    name="childAge"
-                    value={form.childAge}
-                    onChange={handleChange}
-                    placeholder="e.g. 8 years"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Program
-                  </label>
-                  <select
-                    name="program"
-                    value={form.program}
-                    onChange={handleChange}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition bg-white"
-                  >
-                    <option value="">Select...</option>
-                    {programs.map((p) => (
-                      <option key={p} value={p}>{p}</option>
-                    ))}
-                  </select>
-                </div>
+                <FloatingInput
+                  label="Child's Age"
+                  name="childAge"
+                  value={form.childAge}
+                  onChange={handleChange}
+                  placeholder="e.g. 8 years"
+                />
+                <FloatingSelect
+                  label="Program"
+                  name="program"
+                  value={form.program}
+                  onChange={(e) => setForm({ ...form, program: e.target.value })}
+                  options={programs}
+                />
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-600 to-orange-500 text-white py-4 rounded-2xl font-bold shadow-lg hover:scale-[1.02] transition flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-purple-600 to-orange-500 text-white py-4 rounded-2xl font-bold shadow-lg hover:scale-[1.02] transition flex items-center justify-center gap-2 relative overflow-hidden group"
               >
-                <Send size={18} />
-                Send Enquiry on WhatsApp
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+                <Send size={18} className="relative z-10" />
+                <span className="relative z-10">Send Enquiry on WhatsApp</span>
               </button>
             </form>
           </div>

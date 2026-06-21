@@ -7,7 +7,6 @@ const images = [
   { src: "/images/gallery/g3.jpg", alt: "Abacus class in session" },
   { src: "/images/gallery/g2.jpg", alt: "Students learning Vedic Maths" },
   { src: "/images/gallery/gallery1.jpg", alt: "Brain development activity" },
-  { src: "/images/gallery/gallery2.jpg", alt: "Rubik's Cube training" },
   { src: "/images/gallery/gallery3.jpg", alt: "Holiday workshop fun" },
   { src: "/images/gallery/gallery4.jpg", alt: "Personality development session" },
   { src: "/images/gallery/g5.jpeg", alt: "Students at Orion Classes" },
@@ -19,15 +18,10 @@ const images = [
   { src: "/images/gallery/g17.jpeg", alt: "Students at Orion Classes" },
   { src: "/images/gallery/g11.jpeg", alt: "Students at Orion Classes" },
   { src: "/images/gallery/g12.jpeg", alt: "Students at Orion Classes" },
-  { src: "/images/gallery/g20.jpeg", alt: "Students at Orion Classes" },
   { src: "/images/gallery/g13.jpeg", alt: "Students at Orion Classes" },
   { src: "/images/gallery/g14.jpeg", alt: "Students at Orion Classes" },
-  { src: "/images/gallery/g18.jpeg", alt: "Students at Orion Classes" },
   { src: "/images/gallery/g15.jpeg", alt: "Students at Orion Classes" },
   { src: "/images/gallery/g16.jpeg", alt: "Students at Orion Classes" },
-  { src: "/images/gallery/g19.jpeg", alt: "Students at Orion Classes" },
-  { src: "/images/gallery/g21.jpeg", alt: "Students at Orion Classes" },
-  { src: "/images/gallery/g22.jpeg", alt: "Students at Orion Classes" },
 ];
 
 const VISIBLE = 3; // photos per page on desktop

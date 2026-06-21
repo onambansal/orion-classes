@@ -50,12 +50,32 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-md shadow-md border-b border-white/20"
-          : "bg-white border-b border-gray-100"
+          ? "bg-white/60 backdrop-blur-xl shadow-lg border-b border-white/30"
+          : "bg-white/95 border-b border-gray-100"
       }`}
+      style={
+        scrolled
+          ? {
+              boxShadow:
+                "0 4px 24px 0 rgba(147,51,234,0.08), 0 1.5px 0 0 rgba(249,115,22,0.10)",
+            }
+          : undefined
+      }
     >
+      {/* Gradient border line at bottom when scrolled */}
+      {scrolled && (
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[1.5px] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to right, transparent, #9333ea 30%, #f97316 70%, transparent)",
+            opacity: 0.5,
+          }}
+        />
+      )}
+
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
@@ -118,16 +138,23 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Back to Top Button */}
-      {showBackToTop && (
+      {/* Back to Top Button — pill style */}
+      <div
+        className={`fixed bottom-24 right-4 z-50 transition-all duration-500 ${
+          showBackToTop
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 translate-x-16 pointer-events-none"
+        }`}
+      >
         <button
           onClick={scrollToTop}
-          className="fixed bottom-24 right-4 z-50 w-11 h-11 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+          className="flex items-center gap-2 bg-white border border-purple-200 hover:border-purple-500 text-purple-700 hover:bg-purple-50 px-4 py-2.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-purple-200 hover:shadow-xl text-sm font-semibold group"
           aria-label="Back to top"
         >
-          <ArrowUp size={20} />
+          <ArrowUp size={16} className="group-hover:-translate-y-0.5 transition-transform duration-200" />
+          <span>Back to top</span>
         </button>
-      )}
+      </div>
 
       {/* Mobile Menu */}
       {menuOpen && (

@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MobileCTA from "@/components/MobileCTA";
 import ScrollReveal from "@/components/ScrollReveal";
+import WaveDivider from "@/components/WaveDivider";
 
 export default function Home() {
   return (
@@ -17,21 +18,42 @@ export default function Home() {
       <FreeTrialBanner />
       <Navbar />
       <Hero />
+
+      {/* Hero → About: white to white */}
+      <WaveDivider fromColor="#ffffff" toColor="#ffffff" />
+
       <ScrollReveal>
         <About />
       </ScrollReveal>
+
+      {/* About → Programs: white to purple-50 */}
+      <WaveDivider fromColor="#ffffff" toColor="#f5f3ff" />
+
       <ScrollReveal>
         <Programs />
       </ScrollReveal>
+
+      {/* Programs → Testimonials: white to purple-50 (Programs ends in white, Testimonials starts in purple-50) */}
+      <WaveDivider fromColor="#ffffff" toColor="#f5f3ff" />
+
       <ScrollReveal>
         <Testimonials />
       </ScrollReveal>
+
+      {/* Testimonials → Gallery: white to gray-50 */}
+      <WaveDivider fromColor="#ffffff" toColor="#f9fafb" />
+
       <ScrollReveal>
         <Gallery />
       </ScrollReveal>
+
+      {/* Gallery → Contact: gray-50 to purple-50 */}
+      <WaveDivider fromColor="#f9fafb" toColor="#faf5ff" />
+
       <ScrollReveal>
         <Contact />
       </ScrollReveal>
+
       <Footer />
       <WhatsAppButton />
       <MobileCTA />
