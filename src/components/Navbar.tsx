@@ -11,6 +11,8 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const assessmentLink = { label: "🧠 Free Assessment", href: "/assessment" };
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -118,6 +120,12 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <a
+            href={assessmentLink.href}
+            className="relative overflow-hidden border border-purple-300 text-purple-700 hover:bg-purple-50 px-4 py-2.5 rounded-xl font-semibold text-sm transition"
+          >
+            {assessmentLink.label}
+          </a>
+          <a
             href="https://wa.me/918800093436?text=Hi%20Sonam%20ma'am!%20I'd%20like%20to%20book%20a%20FREE%20trial%20class%20for%20my%20child."
             target="_blank"
             rel="noopener noreferrer"
@@ -170,10 +178,17 @@ export default function Navbar() {
             </a>
           ))}
           <a
+            href={assessmentLink.href}
+            onClick={() => setMenuOpen(false)}
+            className="block border border-purple-300 text-purple-700 px-5 py-3 rounded-xl font-semibold text-sm text-center"
+          >
+            {assessmentLink.label}
+          </a>
+          <a
             href="https://wa.me/918800093436?text=Hi%20Sonam%20ma'am!%20I'd%20like%20to%20book%20a%20FREE%20trial%20class%20for%20my%20child."
             target="_blank"
             rel="noopener noreferrer"
-            className="block bg-gradient-to-r from-purple-600 to-orange-500 text-white px-5 py-3 rounded-xl font-semibold text-sm text-center mt-2"
+            className="block bg-gradient-to-r from-purple-600 to-orange-500 text-white px-5 py-3 rounded-xl font-semibold text-sm text-center"
           >
             🎉 Trial Class
           </a>

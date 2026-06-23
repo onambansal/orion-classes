@@ -49,6 +49,7 @@ export default function Footer() {
                 { label: "Testimonials", href: "#testimonials" },
                 { label: "Gallery", href: "#gallery" },
                 { label: "Contact", href: "#contact" },
+                { label: "🧠 Free Assessment", href: "/assessment" },
               ].map((link) => (
                 <li key={link.label}>
                   <a

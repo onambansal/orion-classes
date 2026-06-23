@@ -146,10 +146,10 @@ export default function Hero() {
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
             </a>
             <a
-              href="tel:+918800093436"
+              href="/assessment"
               className="bg-white border-2 border-purple-200 hover:border-purple-400 text-purple-700 px-8 py-4 rounded-2xl font-semibold shadow-md transition text-lg text-center"
             >
-              📞 Call Now
+              🧠 Try Free Assessment
             </a>
           </div>
 

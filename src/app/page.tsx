@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Programs from "@/components/Programs";
+import AssessmentBanner from "@/components/AssessmentBanner";
 import Testimonials from "@/components/Testimonials";
 import Gallery from "@/components/Gallery";
 import Contact from "@/components/Contact";
@@ -33,7 +34,10 @@ export default function Home() {
         <Programs />
       </ScrollReveal>
 
-      {/* Programs → Testimonials: white to purple-50 (Programs ends in white, Testimonials starts in purple-50) */}
+      {/* Programs → Assessment Banner */}
+      <AssessmentBanner />
+
+      {/* Assessment Banner → Testimonials */}
       <WaveDivider fromColor="#ffffff" toColor="#f5f3ff" />
 
       <ScrollReveal>
